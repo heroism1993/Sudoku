@@ -1,20 +1,3 @@
-def SudokuSolver(sudoku, index):
-    if index == 81:
-        return True
-
-    if sudoku.numbers[index] != 0:
-        return SudokuSolver(sudoku, index + 1)
-
-    valid = sudoku.getValid(index)
-
-    for i in valid:
-        sudoku.numbers[index] = i
-        if SudokuSolver(sudoku, index + 1):
-            return True
-
-    sudoku.numbers[index] = 0
-    return False
-
 class Sudoku():
     """description of class"""
     numbsers = []
