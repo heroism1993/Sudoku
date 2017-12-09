@@ -1,6 +1,5 @@
 import cv2
 from Sudoku import Sudoku
-from Sudoku import SudokuSolver
 import sys
 
 
@@ -15,5 +14,8 @@ if __name__ == "__main__":
 
     sudoku = Sudoku(data)
 
-    res = SudokuSolver(sudoku, 0)
-    print(sudoku.numbers)
+    res = sudoku.SudokuSolver()
+    if res:
+        print(sudoku.numbers)
+    else:
+        print("This sudoku can not be resolved.")

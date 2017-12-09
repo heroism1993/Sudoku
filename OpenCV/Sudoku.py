@@ -24,7 +24,27 @@ class Sudoku():
             print("Sudoku numbers count error!!!")
         else:
             self.numbers = list(numbers)
-        
+
+    def SudokuSolver(self):
+        return self.PartitionSolver(0)
+
+    def PartitionSolver(self, index):
+        if index == 81:
+            return True
+
+        if self.numbers[index] != 0:
+            return self.PartitionSolver(index + 1)
+
+        valid = self.getValid(index)
+
+        for i in valid:
+            self.numbers[index] = i
+            if self.PartitionSolver(index + 1):
+                return True
+
+        self.numbers[index] = 0
+        return False
+
     def getValid(self, index):
         
         if index >= 81 or index < 0:
