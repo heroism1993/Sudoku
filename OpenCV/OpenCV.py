@@ -1,22 +1,8 @@
 import cv2
-import Sudoku
+from Sudoku import Sudoku
+from Sudoku import SudokuSolver
 import sys
-def solve(sudoku, index):
-    if index == 81:
-        return True
 
-    if sudoku.numbers[index] != 0:
-        return solve(sudoku, index + 1)
-
-    valid = sudoku.getValid(index)
-
-    for i in valid:
-        sudoku.numbers[index] = i
-        if solve(sudoku, index + 1):
-            return True
-
-    sudoku.numbers[index] = 0
-    return False
 
 if __name__ == "__main__":
     data = [None] * 81
@@ -27,7 +13,7 @@ if __name__ == "__main__":
         else:
             data[i] = int(ch)
 
-    sudoku = Sudoku.Sudoku(data)
+    sudoku = Sudoku(data)
 
-    res = solve(sudoku, 0)
+    res = SudokuSolver(sudoku, 0)
     print(sudoku.numbers)
